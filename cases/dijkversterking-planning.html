@@ -19,16 +19,62 @@
 
   <a class="back" href="../index.html">← Terug naar overzicht</a>
 
-  <div class="placeholder-note">
-    <strong>In opbouw.</strong> Deze case-study is in voorbereiding. Eerste publicatie volgt binnenkort.
-  </div>
+  <p class="meta">Mei 2026 · case-study uit de praktijk · alle namen, locaties en organisaties geanonimiseerd</p>
 
-  <h2>Wat komt eraan</h2>
+  <h2>De situatie</h2>
+
+  <p>Een dijkversterking loopt jaren. Aan tafel zitten vier organisaties — aannemer, waterschap, ingenieursbureau, adviesbureau — die samen één integraal contract uitvoeren. Honderden activiteiten moeten in volgorde: vergunningen vóór ontwerp, ontwerp vóór uitvoering, uitvoering vóór oplevering.</p>
+
+  <p>De planning is de ruggengraat én de plek waar werelden botsen. Iedere discipline heeft eigen tools (P6, Excel, Relatics), eigen taal en een eigen idee over wat "klaar" betekent. De planner zit in het midden.</p>
+
+  <h2>De uitdaging</h2>
+
+  <p>Concreet: een planning van <strong>192 WBS-elementen</strong>, <strong>971 activiteiten</strong>, <strong>1.308 logische relaties</strong>. Elke maand een voortgangsrapportage waarin <strong>25 reviewers</strong> commentaar leveren op activity-niveau.</p>
+
+  <p>Tot voor kort verliep dat zo: planner mailt een PDF uit Primavera, reviewers schrijven in Word, planner verwerkt dertig losse documenten met de hand terug naar P6. Twee problemen.</p>
+
+  <ol>
+    <li><strong>Feedback verdwijnt.</strong> Niemand weet meer of een opmerking uit ronde 5 is opgepakt of niet.</li>
+    <li><strong>Tijd.</strong> Eén volledige update-cyclus duurde dagen.</li>
+  </ol>
+
+  <h2>De aanpak</h2>
+
+  <p>De planning ontkoppelen van het reviewproces — zónder de canonieke positie van P6 op te geven. Vier bouwstenen:</p>
+
+  <h3>1. Lossless round-trip XER ↔ JSON</h3>
+  <p>Het exportformaat van Primavera (XER) is tab-delimited en niet bedoeld om te bewerken — maar het ís canonical. Een Python-pipeline zet XER om naar editable JSON, accepteert AI-edits via gestructureerde diffs op task-id, en schrijft lossless terug. Met validatie en een roundtrip-test die per release bewijst dat geen veld verloren gaat.</p>
+
+  <h3>2. Reviewer-site met klembord-feedback</h3>
+  <p>Een statische website (HTML + JS, geen backend) leest de planning uit JSON. Per activity een 💬-knop. Reviewers loggen in via magic-link op hun werk-email, geven commentaar, en op één knop krijg ik alles op het klembord — geformatteerd, met activity-codes, wie en wanneer. Geen issues, geen verdwaalde mails, geen Word-documenten.</p>
+
+  <h3>3. AI-feedback-verwerking</h3>
+  <p>Vrije team-input (Slack-berichten, e-mails, voice-memo's, meeting-notes) gaat door Claude API tegen de XER-context. Output: een gestructureerde change-set met confidence-score per activity. <em>"Engineering loopt twee weken uit"</em> wordt vertaald naar concrete activity-RD-updates met een audit-log. Een mens keurt elke import goed.</p>
+
+  <h3>4. Walkthrough als ritueel</h3>
+  <p>Eens per cyclus loop ik live met elke discipline-lead door hun deel van de planning. Wijzigingen tijdens het gesprek vang ik direct op via de site, klembord-export gaat als notulen naar Slack. Twintig minuten per discipline, vijf disciplines, klaar.</p>
+
+  <h2>Resultaat</h2>
+
+  <p>Een volledige update-cyclus duurt nu uren in plaats van dagen. Feedback is herleidbaar tot persoon en activity. P6 blijft canonical — geen schaduw-werkelijkheid in Excel — en elke import heeft een audit-log. Vier organisaties werken op dezelfde planning zonder dat ze dezelfde tools draaien.</p>
+
+  <h2>Wat dit generaliseerbaar maakt</h2>
+
+  <p>Het patroon is niet specifiek voor dijken. Elk groot infraproject heeft een canonieke planning, een ring van stakeholders die er commentaar op moeten geven, en een planner die het terug moet vertalen. Drie vaste regels onder de motorkap:</p>
+
   <ul>
-    <li>Uitdaging: planning-discipline op een meerjarig dijkversterkings­project met 25+ reviewers uit 4 organisaties</li>
-    <li>Aanpak: XER → JSON pipeline, klembord-feedback flow, geanonimiseerde walkthroughs per discipline-lead</li>
-    <li>Resultaat: één bron van waarheid, lossless round-trip, audit-log per change</li>
+    <li><strong>Bron-tool blijft canonical.</strong> Niet vervangen — ontkoppelen.</li>
+    <li><strong>Elke verandering is een gestructureerde diff.</strong> Geen vrije edits, geen schaduw-velden.</li>
+    <li><strong>AI versnelt routine, mensen beslissen.</strong> Confidence-score plus mens-in-de-loop bij elke import.</li>
   </ul>
+
+  <h2>Wat ik leerde</h2>
+
+  <p>Dat het bouwen van de pipeline niet het moeilijke deel was. Het moeilijke deel was reviewers ervan overtuigen dat hun feedback érgens belandt. Een rijtje codes op het klembord doet meer dan tien e-mails over "we nemen het mee".</p>
+
+  <hr style="border: none; border-top: 1px solid var(--c-line); margin: 2.5rem 0;">
+
+  <p><em>Herken je het patroon? Werk je aan een infraproject met dezelfde stakeholder-ring? Ik hoor graag of dit elders ook werkt — <a href="mailto:bramovergaag@gmail.com">e-mail</a> of via <a href="https://www.linkedin.com/company/digital-analytic/">LinkedIn</a>.</em></p>
 
 </article>
 

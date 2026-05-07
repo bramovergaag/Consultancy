@@ -1,0 +1,207 @@
+/* Overgaag Consultancy — Huisstijl
+   Palette: dijkgroen / crème / terracotta / goud
+   Fonts: Playfair Display (display) · Inter (body) · Jost (data)
+*/
+
+:root {
+  --c-primary: #2C4A3E;
+  --c-primary-light: #3D6B57;
+  --c-secondary: #16315B;
+  --c-warm: #E8845A;
+  --c-gold: #C9A227;
+  --c-bg: #FDF8F3;
+  --c-bg-warm: #F5EDE0;
+  --c-ink: #1F2A37;
+  --c-mid: #4B5563;
+  --c-light: #6B7280;
+  --c-line: #E5DFD3;
+}
+
+* { box-sizing: border-box; }
+
+html, body {
+  margin: 0;
+  padding: 0;
+  background: var(--c-bg);
+  color: var(--c-ink);
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3 {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-weight: 700;
+  color: var(--c-primary);
+  letter-spacing: -0.5px;
+  margin: 0 0 0.5rem 0;
+}
+
+h1 { font-size: clamp(2.4rem, 5vw, 3.4rem); line-height: 1.1; }
+h2 { font-size: 1.6rem; margin-top: 2rem; }
+h3 { font-size: 1.25rem; margin-top: 1rem; }
+
+p { color: var(--c-ink); }
+.meta, small { color: var(--c-mid); font-size: 0.85rem; }
+
+.eyebrow {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.75rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 4px;
+  color: var(--c-primary-light);
+  display: block;
+  margin-bottom: 0.5rem;
+}
+
+a { color: var(--c-primary); text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 3px; }
+a:hover { color: var(--c-warm); }
+
+/* Layout */
+
+.container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 4rem 1.5rem;
+}
+
+header.site {
+  background: linear-gradient(135deg, #2C4A3E 0%, #3D6B57 50%, #2C4A3E 100%);
+  color: white;
+  padding: 3rem 1.5rem 4rem;
+  text-align: center;
+}
+
+header.site h1 { color: white; }
+header.site .tagline {
+  color: rgba(255,255,255,0.85);
+  font-size: 1.05rem;
+  margin-top: 0.75rem;
+  font-weight: 300;
+}
+
+/* Monogram */
+
+.monogram {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #C9A227 0%, #E8845A 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-family: 'Playfair Display', serif;
+  font-size: 1.8rem;
+  font-weight: 700;
+  box-shadow: 0 4px 14px rgba(0,0,0,0.25);
+  margin: 0 auto 1.25rem;
+  position: relative;
+}
+.monogram .horizon-line {
+  position: absolute;
+  bottom: 18px;
+  left: 30%;
+  right: 30%;
+  height: 1px;
+  background: rgba(255,255,255,0.6);
+}
+
+/* Tiles */
+
+.tiles {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.25rem;
+  margin: 2rem 0;
+}
+
+.tile {
+  background: white;
+  border: 1px solid var(--c-line);
+  border-radius: 14px;
+  padding: 1.5rem;
+  text-decoration: none;
+  color: var(--c-ink);
+  box-shadow: 0 4px 14px rgba(31,42,55,0.05);
+  transition: box-shadow 0.2s ease, transform 0.2s ease;
+  display: flex;
+  flex-direction: column;
+}
+
+.tile:hover {
+  box-shadow: 0 12px 28px rgba(31,42,55,0.12);
+  transform: translateY(-2px);
+  color: var(--c-ink);
+}
+
+.tile h3 {
+  margin: 0 0 0.5rem;
+  font-size: 1.15rem;
+}
+
+.tile .tile-meta {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: var(--c-warm);
+  font-weight: 500;
+  margin-bottom: 0.5rem;
+}
+
+.tile p {
+  margin: 0;
+  color: var(--c-mid);
+  font-size: 0.95rem;
+}
+
+.tile .status {
+  margin-top: auto;
+  padding-top: 0.75rem;
+  font-size: 0.75rem;
+  color: var(--c-light);
+  font-style: italic;
+}
+
+/* Footer */
+
+footer.site {
+  border-top: 1px solid var(--c-line);
+  background: var(--c-bg-warm);
+  padding: 2rem 1.5rem;
+  text-align: center;
+  color: var(--c-mid);
+  font-size: 0.85rem;
+}
+
+footer.site a { color: var(--c-mid); }
+
+/* Article (cases + posts) */
+
+article.content {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 3rem 1.5rem;
+}
+
+article.content .back {
+  display: inline-block;
+  margin-bottom: 1.5rem;
+  font-size: 0.85rem;
+  color: var(--c-mid);
+  text-decoration: none;
+}
+article.content .back:hover { color: var(--c-warm); }
+
+.placeholder-note {
+  background: var(--c-bg-warm);
+  border-left: 3px solid var(--c-warm);
+  padding: 1rem 1.25rem;
+  margin: 2rem 0;
+  font-size: 0.95rem;
+  color: var(--c-mid);
+  border-radius: 4px;
+}

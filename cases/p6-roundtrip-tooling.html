@@ -3,7 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>P6 round-trip pipeline — Tooling | Overgaag Consultancy</title>
+<title>P6 ontsluiten &amp; eigen tooling — Overgaag Consultancy</title>
+<meta name="description" content="Projectmanagement slimmer met AI, zonder zware enterprise-tools: P6 bevragen via open-source MCP-servers, eigen Claude-skills voor terugkerend werk, en lichtgewicht automatisering met lessen uit de horeca.">
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../assets/style.css">
 </head>
@@ -11,24 +12,48 @@
 
 <header class="site">
   <span class="eyebrow" style="color: rgba(255,255,255,0.7);">Case-study · Tooling</span>
-  <h1>P6 round-trip pipeline</h1>
-  <p class="tagline">XER → JSON → AI-edits → XER · lossless · met validatie</p>
+  <h1>P6 ontsluiten &amp; eigen tooling</h1>
+  <p class="tagline">Lichtgewicht, zelf beheerd, binnen een afgeschermde omgeving</p>
 </header>
 
 <article class="content">
 
   <a class="back" href="../index.html">← Terug naar overzicht</a>
 
-  <div class="placeholder-note">
-    <strong>In opbouw.</strong> Deze case-study is in voorbereiding. Eerste publicatie volgt binnenkort.
-  </div>
+  <p class="meta">Mei 2026 · waar ik me nu in verdiep</p>
 
-  <h2>Wat komt eraan</h2>
-  <ul>
-    <li>Uitdaging: P6 is canonical, maar bewerkingen moeten herleidbaar, audit-baar en lossless terug</li>
-    <li>Aanpak: gestructureerde diff op task_id, validate-edits + roundtrip-test scripts, baseline-snapshots per VGR-cyclus</li>
-    <li>Resultaat: edits in editable JSON, één-knops re-import, geen schaduw-velden, audit-log per change</li>
-  </ul>
+  <p>De afgelopen weken heb ik gewerkt aan een vraag die me al langer bezighoudt: hoe maak je projectmanagement slimmer met AI, zónder afhankelijk te worden van zware enterprise-tools? Drie sporen.</p>
+
+  <h2>1. Planningsdata ontsluiten met AI — binnen een beveiligde omgeving</h2>
+
+  <p>Planningsbestanden uit Primavera P6 zitten vol waardevolle informatie — kritieke paden, voortgang, risico's — maar die zit vast in een gesloten systeem. Door open-source MCP-servers te koppelen aan AI kun je een planning rechtstreeks bevragen: <em>"Doe een DCMA-kwaliteitscheck"</em>, <em>"Wat is de CPI en SPI?"</em>, <em>"Welke activiteiten zijn voorgangers van A1000?"</em></p>
+
+  <p>Belangrijk: dit gebeurt volledig binnen een afgeschermde, zelf beheerde omgeving. Geen projectdata die buiten de eigen infrastructuur belandt. Vertrouwelijkheid is geen optie maar voorwaarde.</p>
+
+  <p class="meta">Stack: <strong>PyP6Xer</strong> · <strong>p6xer-mcp-server</strong></p>
+
+  <h3>De round-trip pipeline eronder</h3>
+  <p>Bevragen is de helft; veilig terugschrijven de andere. Het exportformaat van Primavera (XER) is tab-delimited en niet bedoeld om te bewerken — maar het ís canonical. Een pipeline zet XER om naar editable JSON, accepteert AI-edits via gestructureerde diffs op task-id, en schrijft lossless terug, met validatie en een roundtrip-test die per release bewijst dat geen veld verloren gaat. Mens-in-de-loop bij elke import.</p>
+
+  <h2>2. Eigen skills bouwen voor terugkerend werk</h2>
+
+  <p>Vaste handelingen — een wekelijkse statusupdate, een terugkerende kwaliteitscheck, een rapportageformat — verdienen geen handmatige herhaling. Met <strong>Claude Code</strong> en eigen <code>SKILL.md</code>-bestanden bouw je workflows die zich aan jouw werkwijze aanpassen, niet andersom.</p>
+
+  <h2>3. Lessen uit de horeca: lichtgewicht automatisering die wérkt</h2>
+
+  <p>Naast civiele infra werk ik aan een traject in de horeca-/evenementensector. Wat daar opvalt: oplossingen zijn klein, snel en pragmatisch. Acties, agendapunten en administratie worden automatisch bijgehouden — inclusief directe routebeschrijvingen — en gasten krijgen updates via WhatsApp zonder dat iemand handmatig hoeft te typen.</p>
+
+  <p>Geen enterprise-stack. Wel een workflow die loopt. En precies die compactheid maakt ze interessant voor de zwaardere wereld van projectmanagement.</p>
+
+  <p class="meta">Stack: <a href="https://www.make.com">Make</a> · <a href="https://github.com">GitHub</a> · WhatsApp Business API</p>
+
+  <h2>Wat opvalt</h2>
+
+  <p>De bouwstenen zijn er allemaal. Het verschil zit in de vertaalslag — van techniek naar de dagelijkse praktijk van werkvoorbereiders, planners en projectleiders. Ook oplossingen uit toegankelijke sectoren blijken verrassend goed toepasbaar op complexere projectomgevingen.</p>
+
+  <hr style="border: none; border-top: 1px solid var(--c-line); margin: 2.5rem 0;">
+
+  <p><em>Komende tijd deel ik hier wat ik leer. Werk je aan vergelijkbare tooling, of wil je meedenken? — <a href="mailto:bramovergaag@gmail.com">e-mail</a> of via <a href="https://www.linkedin.com/company/digital-analytic/">LinkedIn</a>.</em></p>
 
 </article>
 

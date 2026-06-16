@@ -4,6 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>AI Planning Pilot — Overgaag Consultancy</title>
+<meta name="description" content="Een pilot die vrije team-input — Slack, e-mail, voice, meeting-notes — via Claude tegen de XER-context omzet naar een gevalideerde change-set met confidence-score. Mens-in-de-loop bij elke import.">
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../assets/style.css">
 </head>
@@ -19,16 +20,49 @@
 
   <a class="back" href="../index.html">← Terug naar overzicht</a>
 
-  <div class="placeholder-note">
-    <strong>In opbouw.</strong> Deze case-study is in voorbereiding. Eerste publicatie volgt binnenkort.
-  </div>
+  <p class="meta">Pilot uit de praktijk · alle namen, locaties en organisaties geanonimiseerd</p>
 
-  <h2>Wat komt eraan</h2>
+  <h2>De situatie</h2>
+
+  <p>Elke maand dezelfde klus: losse team-input verzamelen en terugvertalen naar de planning. De input komt in vijf vormen binnen — Slack-berichten, e-mails, voice-memo's, meeting-notes — en de planner zet het met de hand om naar Primavera P6.</p>
+
+  <p>Deze pilot maakt van die handeling een herhaalbaar proces. Het is de generalisatie van de feedback-verwerking uit het <a href="dijkversterking-planning.html">dijkversterkingsproject</a>: niet één keer bouwen voor één project, maar als methode die elders werkt.</p>
+
+  <h2>De uitdaging</h2>
+
+  <p>Het terugvertalen kost uren en is foutgevoelig. <em>"Engineering loopt twee weken uit"</em> moet landen op de juiste activiteiten, met de juiste doorwerking in de relaties. En onderweg raakt feedback zoek: niemand weet meer of een opmerking is opgepakt of niet.</p>
+
+  <h2>De aanpak</h2>
+
+  <p>Vier bouwstenen, met de mens als sluitstuk:</p>
+
+  <h3>1. Vrije input, geen format-dwang</h3>
+  <p>Het team levert aan zoals het uitkomt — geen nieuw portaal, geen verplicht sjabloon. De drempel om iets te melden moet nul zijn, anders valt de bron droog.</p>
+
+  <h3>2. Claude tegen de XER-context</h3>
+  <p>De ruwe input gaat door Claude API, gewogen tegen de actuele planning (de XER-export). De analyse classificeert wat er gezegd wordt per activiteit — wélke taak, wélke impact.</p>
+
+  <h3>3. Change-set met confidence-score</h3>
+  <p>De output is geen tekst maar een gestructureerde change-set: per voorgestelde wijziging een confidence-score. De planner ziet meteen waar de zekerheid hoog is en waar hij beter zelf kijkt.</p>
+
+  <h3>4. Diff-preview en mens-in-de-loop</h3>
+  <p>Niets gaat automatisch door. De planner krijgt een diff-preview en keurt elke import goed. Elke wijziging krijgt een audit-log: bron, beslisser, moment.</p>
+
+  <h2>Resultaat</h2>
+
+  <p>Van vrije input tot een gevalideerde diff-preview in minuten in plaats van uren. Elke wijziging is herleidbaar tot de persoon die het meldde en de planner die het goedkeurde. De planner houdt het stuur; de routine verdwijnt.</p>
+
+  <h2>Wat de pilot moet uitwijzen</h2>
+
   <ul>
-    <li>Uitdaging: maandelijkse progress-update vergt uren handwerk; team levert input in Slack, e-mail, voice, meeting-notes</li>
-    <li>Aanpak: Claude API analyseert vrije input tegen XER-context, classificeert per activiteit, genereert change-set met confidence-score</li>
-    <li>Resultaat: van vrije input tot gevalideerde diff-preview in minuten — mens-in-de-loop bij elke import</li>
+    <li>Bij welke confidence-drempel je een wijziging met een gerust hart laat staan — en wanneer de mens altijd moet kijken.</li>
+    <li>Hoe de governance eruitziet: AI administreert, de mens beslist. Precies de rolverdeling die de EU AI Act (aug 2026) vraagt.</li>
+    <li>Of de tijdwinst standhoudt zodra het team de tool écht in de routine opneemt.</li>
   </ul>
+
+  <hr style="border: none; border-top: 1px solid var(--c-line); margin: 2.5rem 0;">
+
+  <p><em>Herken je het maandelijkse terugvertaal-werk? Ik wissel graag uit hoe dit bij jou zou landen — <a href="mailto:bramovergaag@gmail.com">e-mail</a> of via <a href="https://www.linkedin.com/company/digital-analytic/">LinkedIn</a>.</em></p>
 
 </article>
 

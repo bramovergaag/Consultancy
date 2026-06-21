@@ -16,7 +16,11 @@
   .i18n-en{display:none}
   body.en .i18n-nl{display:none}
   body.en .i18n-en{display:revert}
+  figure.twin{margin:0 0 1.6rem}
+  figure.twin model-viewer{width:100%;height:440px;background:radial-gradient(circle at 50% 30%,#1b2430,#0d1218);border-radius:12px;border:1px solid var(--c-line)}
+  figure.twin figcaption{font-size:.8rem;color:var(--c-mid);text-align:center;margin-top:.6rem}
 </style>
+<script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/3.5.0/model-viewer.min.js"></script>
 </head>
 <body>
 
@@ -35,6 +39,14 @@
   <a class="back" href="../index.html"><span class="i18n-nl">← Terug naar overzicht</span><span class="i18n-en">← Back to overview</span></a>
 
   <p class="meta"><span class="i18n-nl">Juni 2026 · reflectie</span><span class="i18n-en">June 2026 · reflection</span></p>
+
+  <figure class="twin">
+    <model-viewer src="../assets/huis.glb" camera-controls touch-action="pan-y" auto-rotate auto-rotate-delay="1500"
+      interaction-prompt="none" shadow-intensity="0.7" exposure="1.05" environment-image="neutral"
+      camera-orbit="-40deg 70deg auto" field-of-view="34deg" loading="lazy" reveal="auto"
+      alt="Interactieve 3D digital twin van het huis"></model-viewer>
+    <figcaption><span class="i18n-nl">De interactieve 3D-twin van het huis (SketchUp → GLB → model-viewer). Sleep om te draaien.</span><span class="i18n-en">The interactive 3D twin of the house (SketchUp → GLB → model-viewer). Drag to rotate.</span></figcaption>
+  </figure>
 
   <!-- ===== NL ===== -->
   <div class="i18n-nl">

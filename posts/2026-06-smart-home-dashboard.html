@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Een live dashboard voor mijn eigen huis — Overgaag Consultancy</title>
+<meta name="description" content="De tech achter mijn smart-home digital twin: model-viewer/WebGL, Home Assistant, LG ThinQ, EnergyZero-prijzen, Open-Meteo en Cloudflare Pages Functions achter Cloudflare Access.">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/style.css">
+<style>
+  header.site{position:relative}
+  .langtoggle{position:absolute;top:16px;right:16px;display:inline-flex;border:1px solid rgba(255,255,255,.35);border-radius:999px;overflow:hidden}
+  .langbtn{background:transparent;color:rgba(255,255,255,.85);border:0;padding:5px 13px;font:600 12px/1 'Inter',sans-serif;cursor:pointer;letter-spacing:1px}
+  .langbtn.active{background:var(--c-gold);color:#2C4A3E}
+  .langbtn+.langbtn{border-left:1px solid rgba(255,255,255,.25)}
+  .i18n-en{display:none}
+  body.en .i18n-nl{display:none}
+  body.en .i18n-en{display:revert}
+</style>
+</head>
+<body>
+
+<header class="site">
+  <div class="langtoggle" role="group" aria-label="Taal / Language">
+    <button class="langbtn active" data-l="nl" type="button">NL</button>
+    <button class="langbtn" data-l="en" type="button">EN</button>
+  </div>
+  <span class="eyebrow" style="color: rgba(255,255,255,0.7);"><span class="i18n-nl">Post · Juni 2026</span><span class="i18n-en">Post · June 2026</span></span>
+  <h1><span class="i18n-nl">Een live dashboard voor mijn eigen huis</span><span class="i18n-en">A live dashboard for my own house</span></h1>
+  <p class="tagline"><span class="i18n-nl">De tech achter mijn smart-home digital twin</span><span class="i18n-en">The tech behind my smart-home digital twin</span></p>
+</header>
+
+<article class="content">
+
+  <a class="back" href="../index.html"><span class="i18n-nl">← Terug naar overzicht</span><span class="i18n-en">← Back to overview</span></a>
+
+  <p class="meta"><span class="i18n-nl">Juni 2026 · reflectie</span><span class="i18n-en">June 2026 · reflection</span></p>
+
+  <!-- ===== NL ===== -->
+  <div class="i18n-nl">
+    <h2>Wat ik bouwde</h2>
+    <p>Naast mijn werk op infraprojecten bouw ik graag thuis. Voor mijn eigen huis — dat nu nog volop wordt verbouwd — maakte ik een live dashboard: één scherm voor energie, apparaten en weer. Hieronder de techniek eronder.</p>
+
+    <h2>Digital twin</h2>
+    <p>Mijn SketchUp-model van het huis exporteer ik naar GLB (geoptimaliseerd met <em>gltf-transform</em>) en toon ik in de browser met Google's <code>&lt;model-viewer&gt;</code> (WebGL). Eén schakelaar wisselt tussen een 2D-plattegrond — handgetekend in SVG, met de apparaten erop — en een 3D-doorsnede van het huis.</p>
+
+    <h2>Apparaten &amp; energie, live</h2>
+    <p><strong>Home Assistant</strong> is het hart. Het leest mijn LG-airco's, de boiler, de P1-slimme meter (verbruik, teruglevering, gas) en zelfs mijn Picnic-mandje uit. De airco's stuur ik ook écht aan — rechtstreeks via de <strong>LG ThinQ API</strong>.</p>
+
+    <h2>Dynamische stroomprijs</h2>
+    <p>De EPEX-uurprijzen haal ik op via <strong>EnergyZero</strong> en reken ik om naar mijn Eneco all-in tarief (inclusief energiebelasting en inkoopvergoeding). De live kosten zijn simpel: actueel vermogen × de prijs van dít uur. De goedkoopste uren van de dag worden vanzelf gemarkeerd.</p>
+
+    <h2>Weer en slimme acties</h2>
+    <p><strong>Open-Meteo</strong> levert de verwachting (zonder API-key). Daarop bouw ik weer-gedreven tips — "voorkoelen vóór de middaghitte" — én voorgestelde acties die de airco's aanzetten. Met een human-in-the-loop schakelaar en een logboek: de machine stelt voor, ik beslis.</p>
+
+    <h2>Hosting &amp; security</h2>
+    <p>Alles draait op <strong>Cloudflare Pages</strong> met serverless <strong>Pages Functions</strong> als mini-API. Home Assistant staat nooit publiek: het hangt achter een <strong>Cloudflare Tunnel + Access</strong>, en alle sleutels zitten als Pages-secrets — nooit in de browser of in Git. Het dashboard zelf zit achter een echte login.</p>
+  </div>
+
+  <!-- ===== EN ===== -->
+  <div class="i18n-en">
+    <h2>What I built</h2>
+    <p>Alongside my work on infrastructure projects, I like to build at home. For my own house — currently still being renovated — I made a live dashboard: one screen for energy, devices and weather. Here's the tech behind it.</p>
+
+    <h2>Digital twin</h2>
+    <p>I export my SketchUp model of the house to GLB (optimised with <em>gltf-transform</em>) and render it in the browser with Google's <code>&lt;model-viewer&gt;</code> (WebGL). A single switch toggles between a 2D floor plan — hand-drawn in SVG, with the devices on it — and a 3D cutaway of the house.</p>
+
+    <h2>Devices &amp; energy, live</h2>
+    <p><strong>Home Assistant</strong> is the hub. It reads my LG air conditioners, the boiler, the P1 smart meter (consumption, feed-in, gas) and even my Picnic grocery basket. I also control the AC units for real — directly via the <strong>LG ThinQ API</strong>.</p>
+
+    <h2>Dynamic electricity price</h2>
+    <p>I fetch EPEX hourly prices via <strong>EnergyZero</strong> and convert them to my Eneco all-in rate (including energy tax and supplier surcharge). Live cost is simple: current power × the price of this hour. The cheapest hours of the day are highlighted automatically.</p>
+
+    <h2>Weather and smart actions</h2>
+    <p><strong>Open-Meteo</strong> provides the forecast (no API key). On top of it I build weather-driven tips — "pre-cool before the afternoon heat" — and suggested actions that switch the AC units on. With a human-in-the-loop toggle and an audit log: the machine suggests, I decide.</p>
+
+    <h2>Hosting &amp; security</h2>
+    <p>Everything runs on <strong>Cloudflare Pages</strong> with serverless <strong>Pages Functions</strong> as a mini-API. Home Assistant is never public: it sits behind a <strong>Cloudflare Tunnel + Access</strong>, and all keys live as Pages secrets — never in the browser or in Git. The dashboard itself sits behind a real login.</p>
+  </div>
+
+  <hr style="border: none; border-top: 1px solid var(--c-line); margin: 2.5rem 0;">
+
+  <p class="i18n-nl"><em>Geen enterprise-stack. Wel een dashboard dat loopt. Datzelfde principe — data ontsluiten, lichtgewicht bouwen, de mens laten beslissen — pas ik toe op grote infraprojecten. Benieuwd of het bij jou past? <a href="mailto:bramovergaag@gmail.com">e-mail</a> of via <a href="https://www.linkedin.com/company/digital-analytic/">LinkedIn</a>.</em></p>
+  <p class="i18n-en"><em>No enterprise stack. Just a dashboard that works. That same principle — surface the data, build light, let the human decide — is what I apply on large infrastructure projects. Curious whether it fits your case? <a href="mailto:bramovergaag@gmail.com">email</a> or via <a href="https://www.linkedin.com/company/digital-analytic/">LinkedIn</a>.</em></p>
+
+</article>
+
+<footer class="site">
+  <p>Overgaag Consultancy · KVK 96254327 · Dordrecht<br>
+  <a class="footer-portfolio" href="https://portfolio.overgaagconsultancy.com" title="Privé portfolio — inloggen vereist" rel="nofollow">🔒 Portfolio</a></p>
+</footer>
+
+<script>
+(function(){
+  function set(l){
+    document.body.classList.toggle('en', l==='en');
+    document.documentElement.lang = l;
+    document.querySelectorAll('.langbtn').forEach(function(b){ b.classList.toggle('active', b.dataset.l===l); });
+    try{ localStorage.setItem('ovg-lang', l); }catch(e){}
+  }
+  document.querySelectorAll('.langbtn').forEach(function(b){ b.addEventListener('click', function(){ set(b.dataset.l); }); });
+  var saved='nl'; try{ saved = localStorage.getItem('ovg-lang') || 'nl'; }catch(e){}
+  set(saved);
+})();
+</script>
+
+</body>
+</html>
